@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useDisclosure, MenuItem, Menu, MenuButton, MenuList, Box, Button, MenuItemOption, MenuDivider, MenuOptionGroup, Flex, Divider, Center } from "@chakra-ui/react"
 import { ChevronDownIcon } from '@chakra-ui/icons'
-
+import {ChakraProvider } from "@chakra-ui/react"
 
 const MenuItemCss = styled.div`
   
@@ -11,6 +11,7 @@ const MenuItemCss = styled.div`
 export default function Navbar() {
 
   return (
+    <ChakraProvider>
     <div>
 <br></br>
       <Flex w="100%" align="center" justify="Center" wrap="wrap" direction="row" bg="#335075"   >
@@ -240,6 +241,8 @@ export default function Navbar() {
 
 
     </div>
+
+</ChakraProvider>
 
   );
 };

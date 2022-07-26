@@ -1,144 +1,200 @@
-import styled from '@emotion/styled'
-import { useDisclosure, MenuItem, Menu, MenuButton, MenuList, Box, Button, MenuItemOption, MenuDivider, MenuOptionGroup, Flex, Divider, Center, HStack } from "@chakra-ui/react"
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuIcon,
+  MenuCommand,
+  MenuDivider,
+  Button,
+  Flex,
+  Text,
+  chakra,
+  Box,
+  Switch,
+  IconButton,
+  HStack,ChakraProvider, styled
+} from '@chakra-ui/react';
+import { ChevronRight } from '@chakra-ui/react'
+import { CSSTransition } from 'react-transition-group';
 
-
-const Div = styled.div`
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: wrap;
-    background-color: #335075;
-    font-family: "Times New Roman", Times, serif;
-    display:flex;
-    justify-content: center;   
-    
-  }
-  
-  li {
-    float: left;
-    border-left: 1px solid #bbb
-  }
-  li:last-child {
-    border-right: 1px solid #bbb;
-  }
-  
-  li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 40px;
-    text-decoration: none;
-    font-family: "Times New Roman", Times, serif;
-  }
-  
-  li a:hover, .dropdown:hover .dropbtn {
-    background-color: #243850;
-    font-family: "Times New Roman", Times, serif;
-  }
-  
-  li.dropdown {
-    display: inline-block;
-    color: c6f3ff;
-    font-family: "Times New Roman", Times, serif;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #cccccc;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    font-family: "Times New Roman", Times, serif;
-  }
-  
-  .dropdown-content a {
-    color: #444444;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    font-family: "Times New Roman", Times, serif;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #243850;
-    color: #ffffff;
-    font-family: "Times New Roman", Times, serif;
-    
+const Div=styled.div`
+:root {
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+  --menu-item-width: 14rem;
 }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-    font-family: "Times New Roman", Times, serif;
-    
-  }
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.css-r6z5ec {
+  overflow: hidden;
+  transition: height 500ms ease;
+}
+
+.chakra-menu__menu-list {
+  transition: height 500ms ease;
+}
+
+/* chakra ui menu item */
+.css-593qcw {
+  width: var(--menu-item-width) !important;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-primary-exit {
+  position: absolute;
+}
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+}
+
 `
 
+export default function TestingMenu() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <DropdownMenu />
+    </div>
+  );
+}
 
-export default function Navbar() {
+function DropdownMenu() {
+  const [activeMenu, setActiveMenu] = useState('main');
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  function calcHeight(el) {
+    const height = el.offsetHeight;
+    setMenuHeight(height + 20);
+  }
 
   return (
-    <div>
-      <br></br>
-      <Flex w="100%" align="center" justify="Center" wrap="wrap" direction="row" bg="#335075"   >
+    <ChakraProvider>
 
-        <HStack align="center" flex-wrap="wrap-reverse" direction="row" bg="white" h="auto"  >
-          <Div>
+    <Div>
+      <Menu className="dropdown" closeOnSelect={false}>
+        <MenuButton as={Button} >
+          Actions
+        </MenuButton>
+        <MenuList style={{ height: menuHeight }} className="dropdown">
+          <CSSTransition
+            in={activeMenu === 'main'}
+            timeout={500}
+            classNames="menu-primary"
+            unmountOnExit
+            onEnter={calcHeight}
+            >
+            <div className="main-menu">
+              <MenuItem onClick={() => setActiveMenu('settings')}>
+                <Text>Settings</Text>
+                <Box pos="absolute" ml="80%">
+                  
+                </Box>
+              </MenuItem>
+              <MenuItem onClick={() => setActiveMenu('animals')}>
+                Animals
+                <Box pos="absolute" ml="80%">
+                
+                </Box>
+              </MenuItem>
+              <MenuItem>
+                Coding
+                <Box pos="absolute" ml="80%">
+                  
+                </Box>
+              </MenuItem>
+            </div>
+          </CSSTransition>
 
-            <ul>
-              <li className="dropdown">
-                <a href="javascript:void(0)" className="dropbtn"><strong>Jobs </strong> <ChevronDownIcon /> </a>
-                <div className="dropdown-content">
-                  <a href="https://google.com" rel="noreferrer">Google.com
-                  </a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-              </li>
-              <li className="dropdown">
-                <a href="javascript:void(0)" className="dropbtn"><strong>Jobs </strong> <ChevronDownIcon /> </a>
-                <div className="dropdown-content">
-                  <a href="https://google.com" rel="noreferrer">Google.com
-                  </a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-              </li>
-              
+          <CSSTransition
+            in={activeMenu === 'settings'}
+            timeout={500}
+            classNames="menu-secondary"
+            unmountOnExit
+            onEnter={calcHeight}
+            >
+            <div className="menu-container">
+              <HStack mb="8" spacing="60%">
+                <Box>
+                  <IconButton
+                    variant="outlined"
+                    
+                    onClick={() => setActiveMenu('main')}
+                    />
+                </Box>
+                <Switch />
+              </HStack>
+              <Box>
+                <Text>Generate your words here</Text>
+              </Box>
+            </div>
+          </CSSTransition>
 
-            </ul>
-          </Div>
-
-
-        </HStack>
-
-
-      </Flex>
-<br></br>
-<br></br>
-
-
-      <Flex w="100%" align="center" justify="Center" wrap="wrap" direction="row" bg="#335075">
-
-        <HStack align="center" flex-wrap="wrap-reverse" direction="row" h="auto"  >
-          <Box>
-            <a href="javascript:void(0)" className="dropbtn"><strong>Jobs </strong> <ChevronDownIcon /> </a>
-
-
-          </Box>
-          <Box w='40px' h='40px' bg='tomato'>
-            2
-          </Box>
-          <Box w='40px' h='40px' bg='pink'>
-            3
-          </Box>
-        </HStack>
-      </Flex>
-
-    </div>
-
+          <CSSTransition
+            in={activeMenu === 'animals'}
+            timeout={500}
+            classNames="menu-secondary"
+            unmountOnExit
+            onEnter={calcHeight}
+            >
+            <div className="menu-container">
+              <MenuItem onClick={( ) => setActiveMenu('main')}>Go back</MenuItem>
+              <MenuItem>
+                <p>Dog</p>
+              </MenuItem>
+              <MenuItem>
+                <p>Cat</p>
+              </MenuItem>
+              <MenuItem>
+                <p>Bird</p>
+              </MenuItem>
+            </div>
+          </CSSTransition>
+        </MenuList>
+      </Menu>
+    </Div>
+</ChakraProvider>
   );
-};
+}
+
+// function SubMenus() {
+  //   return (
+    
+    //   )
+    // }
+    

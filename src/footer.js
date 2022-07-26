@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { Box, Center, Container, Divider, Flex, Image, Spacer, HStack } from '@chakra-ui/react';
+import { Box, Center, Container, Image } from '@chakra-ui/react';
 
 
 

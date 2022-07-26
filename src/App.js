@@ -1,30 +1,25 @@
-import {  Flex } from '@chakra-ui/react';
-
 import Header from './header';
 import Navbar from './nav';
-
 import Footer from './footer';
-import Spacing from './spacing';
-
-//  
-//       <Header />
-//       <TopMenu />  
-//       <Testing />
-
-//   
-
+import MainBody from './Main';
+import DrawerExample from './drawner_menu';
+import TestingMenu from './testing';
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 
 export default function App() {
   return (
-    
-      <div>
+<ChakraProvider>
+
+    <div>
+
       
-    <Header />
-    <Navbar />
-    <Spacing />
-    <Footer />
-    </div>
     
+     <TestingMenu />
+    </div>
+
+</ChakraProvider>
 
   );
 }
