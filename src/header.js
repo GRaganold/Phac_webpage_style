@@ -109,7 +109,20 @@ export default function Header() {
             </div>
             <Box w="3%"></Box>
           </Flex>
-
+          <Flex
+    w='100vw'
+        h='5px'
+    >
+      
+    </Flex>
+    <Flex
+    w='100vw'
+    bg='white'
+    h='5px'
+    >
+      
+<Spacer />
+    </Flex>
     </CssHeader>
   );
 }

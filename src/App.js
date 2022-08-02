@@ -3,20 +3,21 @@ import Navbar from './nav';
 import Footer from './footer';
 import MainBody from './Main';
 import DrawerExample from './drawner_menu';
-import TestingMenu from './testing';
+import Testing from './testing';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Flex } from '@chakra-ui/react';
+import MenuDrawer from './Menu_drawer';
 
 export default function App() {
   return (
 <ChakraProvider>
 
     <div>
-
-      
+      <Header/>
+      <Testing />
     
-     <TestingMenu />
+     <Footer />
     </div>
 
 </ChakraProvider>
