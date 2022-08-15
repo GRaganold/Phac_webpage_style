@@ -7,32 +7,28 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Benefitslink1 from './pages/benefits/benefitslink1';
 import Benefitslink2 from './pages/benefits/benefitslink2';
 import Benefitslink3 from './pages/benefits/benefitslink3';
-
 import Businesslink1 from './pages/business/businesslink1';
 import Businesslink2 from './pages/business/businesslink2';
 import Businesslink3 from './pages/business/businesslink3';
-
 import Healthlink1 from './pages/health/healthlink1';
 import Healthlink2 from './pages/health/healthlink2';
 import Healthlink3 from './pages/health/healthlink3';
-
 import Immigrationlink1 from './pages/immigration/immigrationlink1';
 import Immigrationlink2 from './pages/immigration/immigrationlink2';
 import Immigrationlink3 from './pages/immigration/immigrationlink3';
-
-import Travellink1 from './pages/travel/travellink1';
-import Travellink2 from './pages/travel/travellink2';
-import Travellink3 from './pages/travel/travellink3';
-
-import Taxeslink1 from './pages/taxes/taxeslink1';
-import Taxeslink2 from './pages/taxes/taxeslink2';
-import Taxeslink3 from './pages/taxes/taxeslink3';
 import Jobslink1 from './pages/jobs/jobsLink1';
 import Jobslink2 from './pages/jobs/jobsLink2';
 import Jobslink3 from './pages/jobs/jobsLink3';
 import Moreserviceslink1 from './pages/more_services/more_servicelink1';
 import Moreserviceslink2 from './pages/more_services/more_servicelink2';
 import Moreserviceslink3 from './pages/more_services/more_servicelink3';
+import Taxeslink1 from './pages/taxes/taxeslink1';
+import Taxeslink2 from './pages/taxes/taxeslink2';
+import Taxeslink3 from './pages/taxes/taxeslink3';
+import Travellink1 from './pages/travel/travellink1';
+import Travellink2 from './pages/travel/travellink2';
+import Travellink3 from './pages/travel/travellink3';
+
 import LandingPage from './pages/landingPage';
 
 
